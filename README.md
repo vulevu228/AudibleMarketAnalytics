@@ -28,7 +28,7 @@ To keep the charts concise and prevent text crowding along the axes, strict grou
 * **Design Execution:** Constructed a dual-axis combo chart charting the `Count of Book Titles` as primary columns, overlaid with a secondary line charting the `Average of Price_Numeric`. 
 * **Constraint Rule:** Applied a **Top 15** filter restriction to hide the unreadable long-tail distribution of thousands of minor authors and focus purely on market leaders.
 
-![Author Market Dominance vs Pricing Power](images/author_market_dominance.png)
+![Author Market Dominance vs Pricing Power](images/author_dominance.png)
 
 * **Key Insight:** Volume giants like "Bill Brown" dominate publishing presence, but specific niches like "Innovative Learning" command massive volume while maintaining high price stability, showcasing incredible pricing power.
 
@@ -45,6 +45,6 @@ To keep the charts concise and prevent text crowding along the axes, strict grou
 * **Design Execution:** Generated an inventory density chart mapping the frequency counts against specific price thresholds. 
 * **Constraint Rule:** Prevented axis clutter by utilizing Excel's numeric **Axis Grouping** tool to consolidate hundreds of separate decimal price tags into tight, clean `$500` bucket increments (e.g., `$0-$499`, `$500-$999`).
 
-![Overall Price Distribution](images/overall_price.png)
+![Overall Price Distribution](images/price_distribution.png)
 
 * **Key Insight:** The distribution pattern peaks heavily in the `$500 - $999` tier, revealing the exact commercial corridor where publishers prefer to position their catalog to capture maximum transactional velocity.
