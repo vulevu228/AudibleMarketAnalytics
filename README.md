@@ -28,7 +28,7 @@ To keep the charts concise and prevent text crowding along the axes, strict grou
 * **Design Execution:** Constructed a dual-axis combo chart charting the `Count of Book Titles` as primary columns, overlaid with a secondary line charting the `Average of Price_Numeric`. 
 * **Constraint Rule:** Applied a **Top 15** filter restriction to hide the unreadable long-tail distribution of thousands of minor authors and focus purely on market leaders.
 
-![Author Market Dominance vs Pricing Power](images/author_market_dominance.png)
+![Author Market Dominance vs Pricing Power](images/author_dominance.png)
 
 * **Key Insight:** Volume giants like "Bill Brown" dominate publishing presence, but specific niches like "Innovative Learning" command massive volume while maintaining high price stability, showcasing incredible pricing power.
 
@@ -44,6 +44,6 @@ To keep the charts concise and prevent text crowding along the axes, strict grou
 * **Core Inquiry:** *What is the sweet spot for consumer audiobook retail pricing?*
 * **Design Execution:** Generated a standard bar graph mapping the frequency counts of audiobooks directly across the structured marketplace retail prices.
 
-![Overall Price Distribution](images/overall_price.png)
+![Overall Price Distribution](images/price_distribution.png)
 
 * **Key Insight:** The distribution pattern peaks heavily in the `$500 - $999` zone, revealing the exact commercial corridor where publishers prefer to position their catalog to capture maximum transactional velocity.
