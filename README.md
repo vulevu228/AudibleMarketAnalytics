@@ -27,22 +27,24 @@ To keep the charts concise and prevent text crowding along the axes, strict grou
 * **Core Inquiry:** *Which authors dominate the English audiobook market by volume, and what is their average pricing power?*
 * **Design Execution:** Constructed a dual-axis combo chart charting the `Count of Book Titles` as primary columns, overlaid with a secondary line charting the `Average of Price_Numeric`. 
 * **Constraint Rule:** Applied a **Top 15** filter restriction to hide the unreadable long-tail distribution of thousands of minor authors and focus purely on market leaders.
+
+![Author Market Dominance vs Pricing Power](images/author_market_dominance.png)
+
 * **Key Insight:** Volume giants like "Bill Brown" dominate publishing presence, but specific niches like "Innovative Learning" command massive volume while maintaining high price stability, showcasing incredible pricing power.
 
 ### 📅 Plot 2: Content Production Velocity & Growth
 * **Core Inquiry:** *Is the digital audiobook marketplace expanding year-over-year?*
 * **Design Execution:** Aggregated the standardized `Release Date` column to automatically group records into chronological yearly intervals along a linear time axis.
+
+![Audiobook Market Growth](images/market_growth.png)
+
 * **Key Insight:** Chronological sorting exposed an undeniable exponential trend. Digital audiobook publication velocity remained completely flat for nearly two decades before skyrocketing upward into massive volume spikes from 2018 onward.
 
 ### 🎯 Plot 3: Retail Pricing Distribution Corridors
 * **Core Inquiry:** *What is the sweet spot for consumer audiobook retail pricing?*
 * **Design Execution:** Generated an inventory density chart mapping the frequency counts against specific price thresholds. 
 * **Constraint Rule:** Prevented axis clutter by utilizing Excel's numeric **Axis Grouping** tool to consolidate hundreds of separate decimal price tags into tight, clean `$500` bucket increments (e.g., `$0-$499`, `$500-$999`).
+
+![Overall Price Distribution](images/overall_price.png)
+
 * **Key Insight:** The distribution pattern peaks heavily in the `$500 - $999` tier, revealing the exact commercial corridor where publishers prefer to position their catalog to capture maximum transactional velocity.
-
----
-
-## 📁 Repository Directory Structure
-* 📂 `audible_uncleaned.csv` -> The original, unmodified 12MB raw web scrape containing all 87k unformatted entries.
-* 📂 `Audible_Cleaned_Dashboard.xlsx` -> The final processed workbook containing the clean language rows, advanced text-parsing formulas, grouped price tiers, and polished presentation charts.
-* 📂 `README.md` -> Detailed project blueprint, workflow logs, and analytics write-up.
