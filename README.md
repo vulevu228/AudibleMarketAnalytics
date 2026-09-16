@@ -1,9 +1,9 @@
 # 🎧 Audible Marketplace: End-to-End Data Cleaning & Market Analytics
 
 ## 📌 Project Overview
-This project targets a massive, raw web-scraped dataset containing **87,489 audiobook records** originally pulled from the Audible.in marketplace. The raw file arrived with severe data formatting issues, structural overlaps, and text anomalies typical of automated web-scraping extraction. 
+This project targets a massive, raw web-scraped dataset containing **87,489 audiobook records** originally pulled from the Audible.in marketplace. The raw file arrived with severe data formatting issues, structural overlaps, and text anomalies typical of automated web-scraping extraction.
 
-Using native, advanced functions and data manipulation tools within **Microsoft Excel**, the data was systematically scrubbed, restructured chronologically, optimized for language barriers, and modeled into interactive Pivot Table reporting assets to extract distinct market strategies.
+The cleaning below was originally done by hand in Excel (`data/Audible_Uncleaned_Dashboard.xlsx` → `data/Audible_Cleaned_Dashboard.xlsx`); `generate_charts.py` now rebuilds the three charts from the cleaned file with pandas/matplotlib so the analysis is reproducible with `pip install -r requirements.txt && python generate_charts.py`.
 
 ---
 
@@ -47,3 +47,12 @@ To keep the charts concise and prevent text crowding along the axes, strict grou
 ![Overall Price Distribution](images/price_distribution.png)
 
 * **Key Insight:** The distribution pattern peaks heavily in the `$500 - $999` zone, revealing the exact commercial corridor where publishers prefer to position their catalog to capture maximum transactional velocity.
+
+## 📂 Structure
+```
+data/
+  Audible_Uncleaned_Dashboard.xlsx   raw scrape
+  Audible_Cleaned_Dashboard.xlsx     cleaned (per the log above)
+images/                              chart exports
+generate_charts.py                   reproduces all three charts
+```
