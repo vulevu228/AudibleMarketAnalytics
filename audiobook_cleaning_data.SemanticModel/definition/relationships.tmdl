@@ -1,0 +1,5 @@
+relationship ab53c2fc-82e9-489d-ab97-b6697045ca74
+	joinOnDateBehavior: datePartOnly
+	fromColumn: audible_uncleaned.release_date
+	toColumn: LocalDateTable_98c37fc0-22b7-4c12-92ee-2752d4b35197.Date
+

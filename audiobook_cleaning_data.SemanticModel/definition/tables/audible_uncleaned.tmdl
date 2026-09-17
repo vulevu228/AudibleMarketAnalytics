@@ -1,0 +1,208 @@
+table audible_uncleaned
+	lineageTag: 8fe301ac-bd6c-456d-be18-0ad102483f1b
+
+	measure 'Total Titles' = COUNTROWS(audible_uncleaned)
+		formatString: #,0
+		lineageTag: ab10001-2000-4a11-9a11-000000000001
+
+	measure 'English Titles' = CALCULATE([Total Titles], audible_uncleaned[language] = "English")
+		formatString: #,0
+		lineageTag: ab10001-2000-4a11-9a11-000000000002
+
+	measure 'Rated Titles' = CALCULATE([Total Titles], NOT ISBLANK(audible_uncleaned[Rating]))
+		formatString: #,0
+		lineageTag: ab10001-2000-4a11-9a11-000000000003
+
+	measure '% Titles Rated' = DIVIDE([Rated Titles], [Total Titles])
+		formatString: 0.0%
+		lineageTag: ab10001-2000-4a11-9a11-000000000004
+
+	measure 'Avg Price' = AVERAGE(audible_uncleaned[Price])
+		formatString: "$"#,0.00
+		lineageTag: ab10001-2000-4a11-9a11-000000000005
+
+	measure 'Avg Price (English)' = CALCULATE([Avg Price], audible_uncleaned[language] = "English")
+		formatString: "$"#,0.00
+		lineageTag: ab10001-2000-4a11-9a11-000000000006
+
+	measure 'Avg Rating' = AVERAGE(audible_uncleaned[Rating])
+		formatString: 0.00
+		lineageTag: ab10001-2000-4a11-9a11-000000000007
+
+	measure 'Total Ratings' = SUM(audible_uncleaned[RatingCount])
+		formatString: #,0
+		lineageTag: ab10001-2000-4a11-9a11-000000000008
+
+	measure 'Avg Duration (hrs)' = DIVIDE(AVERAGE(audible_uncleaned[total_minutes]), 60)
+		formatString: #,0.0
+		lineageTag: ab10001-2000-4a11-9a11-000000000009
+
+	column name
+		dataType: string
+		lineageTag: e8075ad6-a09c-4ae7-9c58-ec1402171bed
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cleaned_author
+		dataType: string
+		lineageTag: e76a0c0e-a0c2-4a0e-a9bc-8e2d28cf2678
+		summarizeBy: none
+		sourceColumn: Cleaned_author
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clean Author'
+		dataType: string
+		lineageTag: e76a0c0e-a0c2-4a0e-a9bc-8e2d28cf2679
+		summarizeBy: none
+		sourceColumn: Clean Author
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name of Auidobook'
+		dataType: string
+		lineageTag: 97bd3df8-cf23-4671-aacb-00bce6feaa38
+		summarizeBy: none
+		sourceColumn: Name of Auidobook
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cleaned_narrator
+		dataType: string
+		lineageTag: fe095ff1-2140-4e3c-aeb2-f0ec4d1e041a
+		summarizeBy: none
+		sourceColumn: Cleaned_narrator
+
+		annotation SummarizationSetBy = Automatic
+
+	column time
+		dataType: string
+		lineageTag: 5a5ee685-8be5-4982-b71a-708f92147c4d
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours
+		dataType: int64
+		formatString: 0
+		lineageTag: 95f11f22-d25b-4654-b574-c7f30dff778a
+		summarizeBy: sum
+		sourceColumn: hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column minutes
+		dataType: int64
+		formatString: 0
+		lineageTag: 979fb411-9a41-4d37-846a-c0f4698034f9
+		summarizeBy: sum
+		sourceColumn: minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_minutes
+		dataType: int64
+		formatString: 0
+		lineageTag: 126e1b6b-ab91-4475-b263-07ec6d81a5c9
+		summarizeBy: sum
+		sourceColumn: total_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 71b19f91-fb13-4df1-9a17-c90d1bd260cc
+		summarizeBy: none
+		sourceColumn: release_date
+
+		variation Variation
+			isDefault
+			relationship: ab53c2fc-82e9-489d-ab97-b6697045ca74
+			defaultHierarchy: LocalDateTable_98c37fc0-22b7-4c12-92ee-2752d4b35197.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column language
+		dataType: string
+		lineageTag: 794dc241-7f27-46d8-8c64-247314ccfb48
+		summarizeBy: none
+		sourceColumn: language
+
+		annotation SummarizationSetBy = Automatic
+
+	column stars
+		dataType: string
+		lineageTag: 0b9a993a-ccf7-441f-b9e6-d90fd8f290dd
+		summarizeBy: none
+		sourceColumn: stars
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: decimal
+		formatString: "$"#,0.00
+		lineageTag: 712241b1-632a-43a7-b076-ef169b3bd9eb
+		summarizeBy: sum
+		sourceColumn: Column12
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating = IF(LEFT(audible_uncleaned[stars], 3) = "Not", BLANK(), VALUE(LEFT(audible_uncleaned[stars], SEARCH(" out of 5 stars", audible_uncleaned[stars]) - 1)))
+		dataType: double
+		formatString: 0.00
+		lineageTag: 712241b1-632a-43a7-b076-ef169b3bd9ff
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RatingCount = VAR t = audible_uncleaned[stars] VAR pos = SEARCH("stars", t) VAR afterStars = SUBSTITUTE(MID(t, pos + 5, 30), ",", "") VAR cleaned = SUBSTITUTE(SUBSTITUTE(afterStars, " ratings", ""), " rating", "") RETURN IF(LEFT(t, 3) = "Not", BLANK(), VALUE(cleaned))
+		dataType: int64
+		formatString: #,0
+		lineageTag: 712241b1-632a-43a7-b076-ef169b3bd9fe
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition audible_uncleaned = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents("C:\Users\emira\Projects\GitHub-Projects\audiobook_cleaning_data\data\Audible_Cleaned_Dashboard.xlsx"), null, true),
+				  #"Navigation 1" = Source{[Item = "audible_uncleaned", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"name", type text}, {"Cleaned_author", type text}, {"Name of Auidobook", type text}, {"Cleaned_narrator", type text}, {"time", type text}, {"hours", Int64.Type}, {"minutes", Int64.Type}, {"total_minutes", Int64.Type}, {"release_date", type date}, {"language", type text}, {"stars", type text}, {"Column12", Currency.Type}}, "en-US"),
+				  AllowedNameChars = {"a".."z"} & {"A".."Z"} & Text.ToList("ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ") & {" ", ".", "-", "'", ","},
+				  UpperNameChars = Text.ToList("ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ"),
+				  CleanAuthorFn = (rawIn as any) as nullable text =>
+				      try
+				          let
+				              raw0 = if rawIn = null then "" else Text.From(rawIn),
+				              raw = Text.Trim(raw0),
+				              words = Text.Split(raw, " "),
+				              nonEmptyWords = List.Select(words, each _ <> ""),
+				              deduped =
+				                  if List.Count(nonEmptyWords) >= 2 and Text.EndsWith(Text.Combine(List.RemoveLastN(nonEmptyWords, 1), " "), List.Last(nonEmptyWords))
+				                  then Text.Combine(List.RemoveLastN(nonEmptyWords, 1), " ")
+				                  else raw,
+				              cleanChars = Text.Select(deduped, AllowedNameChars),
+				              len = Text.Length(deduped),
+				              validLength = len >= 3,
+				              validRatio = len > 0 and Number.From(Text.Length(cleanChars)) / Number.From(len) >= 0.85,
+				              validStart = len > 0 and List.Contains(UpperNameChars, Text.Start(deduped, 1))
+				          in
+				              if validLength and validRatio and validStart then deduped else null
+				      otherwise null,
+				  #"Added Clean Author" = Table.AddColumn(#"Changed column type", "Clean Author", each CleanAuthorFn([Cleaned_author]), type text)
+				in
+				  #"Added Clean Author"
+
+	annotation PBI_ResultType = Table
+

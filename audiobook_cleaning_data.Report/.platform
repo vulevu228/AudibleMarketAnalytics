@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "audiobook_cleaning_data"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ec72ea5d-2016-43d3-8d06-4f26d834f27d"
+  }
+}

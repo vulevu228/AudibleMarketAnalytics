@@ -1,0 +1,26 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 16/09/2026 02:46:51 PM.
+queryGroup 'Query Errors - 16/09/2026 02:46:51 PM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["audible_uncleaned","Errors in audible_uncleaned"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table audible_uncleaned
+ref table DateTableTemplate_a32e9af8-fa5c-4579-a52b-a631bf65385f
+ref table LocalDateTable_98c37fc0-22b7-4c12-92ee-2752d4b35197
+
+ref cultureInfo en-GB
+
