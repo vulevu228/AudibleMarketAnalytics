@@ -175,7 +175,7 @@ table audible_uncleaned
 		mode: import
 		source =
 				let
-				  Source = Excel.Workbook(File.Contents("C:\Users\emira\Projects\GitHub-Projects\audiobook_cleaning_data\data\Audible_Cleaned_Dashboard.xlsx"), null, true),
+				  Source = Excel.Workbook(File.Contents("C:\Users\emira\Projects\GitHub-Projects\AudibleMarketAnalytics\data\Audible_Cleaned_Dashboard.xlsx"), null, true),
 				  #"Navigation 1" = Source{[Item = "audible_uncleaned", Kind = "Sheet"]}[Data],
 				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
 				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"name", type text}, {"Cleaned_author", type text}, {"Name of Auidobook", type text}, {"Cleaned_narrator", type text}, {"time", type text}, {"hours", Int64.Type}, {"minutes", Int64.Type}, {"total_minutes", Int64.Type}, {"release_date", type date}, {"language", type text}, {"stars", type text}, {"Column12", Currency.Type}}, "en-US"),
