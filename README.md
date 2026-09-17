@@ -1,5 +1,7 @@
 # 🎧 Audible Marketplace: End-to-End Data Cleaning & Market Analytics
 
+*One of my first data projects (May 2026).*
+
 ## 📌 Project Overview
 This project targets a massive, raw web-scraped dataset containing **87,489 audiobook records** originally pulled from the Audible.in marketplace. The raw file arrived with severe data formatting issues, structural overlaps, and text anomalies typical of automated web-scraping extraction.
 
